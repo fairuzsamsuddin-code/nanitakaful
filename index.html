@@ -31,6 +31,7 @@
             text-align: center; 
             box-sizing: border-box;
             overflow: hidden; 
+            transition: all 0.3s ease; /* Smooth transition when rotating */
         }
         
         /* NEW: The PruBSN Teal Header */
@@ -144,6 +145,40 @@
         .form-submit-btn:hover { background: #c81625; }
         
         .footer { border-top: 1px solid #eee; padding-top: 20px; font-size: 10px; color: #999; line-height: 1.6; text-align: center; }
+
+        /* --- NEW: RESPONSIVE ADAPTATION FOR WIDE & HORIZONTAL SCREENS --- */
+        @media (min-width: 650px) {
+            .card {
+                max-width: 800px; /* Expands to fill wider screens */
+            }
+            .btn-row {
+                flex-direction: row; /* Places main buttons side-by-side */
+            }
+            .btn-row .link-btn {
+                flex: 1; /* Makes the buttons equal width */
+            }
+            .grid-container {
+                grid-template-columns: repeat(4, 1fr); /* Snaps 2x2 grid into a 4x1 row */
+            }
+        }
+
+        /* Specifically triggers when a mobile phone is held sideways */
+        @media (orientation: landscape) and (max-width: 900px) {
+            body {
+                padding: 20px 15px; /* Reduces spacing at the top/bottom to save vertical screen space */
+            }
+            .card {
+                max-width: 100%; /* Allows card to completely fill horizontal mobile screen */
+            }
+            .card-header {
+                height: 90px; /* Slightly thinner header to save space on rotated screens */
+            }
+            .profile-pic {
+                width: 100px;
+                height: 100px;
+                margin-top: -50px;
+            }
+        }
     </style>
 </head>
 <body>
