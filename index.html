@@ -34,14 +34,14 @@
             transition: all 0.3s ease; /* Smooth transition when rotating */
         }
         
-        /* NEW: The PruBSN Teal Header */
+        /* The PruBSN Teal Header */
         .card-header {
             background: #00A599; 
             height: 120px;
             width: 100%;
         }
 
-        /* NEW: Content wrapper to handle the padding below the header */
+        /* Content wrapper to handle the padding below the header */
         .card-content {
             padding: 0 30px 40px 30px;
         }
@@ -60,6 +60,10 @@
         }
         
         h1 { margin: 15px 0 5px 0; font-size: 24px; color: #1a1a1a; font-weight: 700; }
+        
+        /* Company Logo styling updated for its new position */
+        .company-logo { max-width: 180px; height: auto; margin: 10px 0 10px 0; display: inline-block; }
+        
         .subtitle { color: #ED1B2E; font-weight: 600; font-size: 14px; margin-top: 0; margin-bottom: 20px; }
         
         .social-row { display: flex; justify-content: center; gap: 15px; margin-bottom: 25px; }
@@ -70,7 +74,6 @@
         }
         .social-icon:hover { background: #ED1B2E; color: white; transform: scale(1.1); }
         
-        .company-logo { max-width: 180px; height: auto; margin-bottom: 20px; }
         .bio-text { color: #555; margin-bottom: 30px; line-height: 1.6; font-size: 14px; }
         
         .btn-row { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
@@ -146,32 +149,31 @@
         
         .footer { border-top: 1px solid #eee; padding-top: 20px; font-size: 10px; color: #999; line-height: 1.6; text-align: center; }
 
-        /* --- NEW: RESPONSIVE ADAPTATION FOR WIDE & HORIZONTAL SCREENS --- */
+        /* --- RESPONSIVE ADAPTATION FOR WIDE & HORIZONTAL SCREENS --- */
         @media (min-width: 650px) {
             .card {
-                max-width: 800px; /* Expands to fill wider screens */
+                max-width: 800px;
             }
             .btn-row {
-                flex-direction: row; /* Places main buttons side-by-side */
+                flex-direction: row; 
             }
             .btn-row .link-btn {
-                flex: 1; /* Makes the buttons equal width */
+                flex: 1; 
             }
             .grid-container {
-                grid-template-columns: repeat(4, 1fr); /* Snaps 2x2 grid into a 4x1 row */
+                grid-template-columns: repeat(4, 1fr); 
             }
         }
 
-        /* Specifically triggers when a mobile phone is held sideways */
         @media (orientation: landscape) and (max-width: 900px) {
             body {
-                padding: 20px 15px; /* Reduces spacing at the top/bottom to save vertical screen space */
+                padding: 20px 15px; 
             }
             .card {
-                max-width: 100%; /* Allows card to completely fill horizontal mobile screen */
+                max-width: 100%; 
             }
             .card-header {
-                height: 90px; /* Slightly thinner header to save space on rotated screens */
+                height: 90px; 
             }
             .profile-pic {
                 width: 100px;
@@ -192,16 +194,18 @@
         <div class="card-content">
             <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
             <h1>Nani Mad Sahad</h1>
+            
+            <!-- Company Logo explicitly moved just below the name with the exact filename requested -->
+            <img src="company-logo.JPG" alt="Company Logo" class="company-logo" onerror="this.style.display='none'">
+            
             <p class="subtitle">Your No 1 Takaful Consultant</p>
 
             <div class="social-row">
-            <a href="https://www.facebook.com/share/1BcYCUj33D/?mibextid=wwXIfr" class="social-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/me_nani/" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://threads.net/@me_nani" class="social-icon" target="_blank"><i class="fa-brands fa-threads"></i></a>
-            <a href="https://tiktok.com/@ms_rigidius" class="social-icon" target="_blank"><i class="fab fa-tiktok"></i></a>
-        </div>
-
-            <img src="company-logo.jpg" alt="Company Logo" class="company-logo" onerror="this.style.display='none'">
+                <a href="https://www.facebook.com/share/1BcYCUj33D/?mibextid=wwXIfr" class="social-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/me_nani/" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://threads.net/@me_nani" class="social-icon" target="_blank"><i class="fa-brands fa-threads"></i></a>
+                <a href="https://tiktok.com/@ms_rigidius" class="social-icon" target="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
 
             <p class="bio-text">Sedia bantu tuan/puan untuk dapatkan consultation & quotation takaful yang comprehensive</p>
             
