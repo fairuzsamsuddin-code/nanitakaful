@@ -33,22 +33,11 @@
             transition: all 0.3s ease; 
         }
         
-        /* UPDATED: The header now uses flexbox to center the company logo */
+        /* Pengepala PruBSN Teal */
         .card-header {
             background: #00A599; 
-            height: 140px; /* Slightly taller to fit the logo comfortably */
+            height: 120px; 
             width: 100%;
-            display: flex;
-            justify-content: center;
-            padding-top: 20px;
-            box-sizing: border-box;
-        }
-
-        /* UPDATED: Company Logo styling customized for the header */
-        .company-logo { 
-            max-width: 160px; 
-            max-height: 50px; /* Prevents it from getting too tall */
-            object-fit: contain;
         }
 
         .card-content {
@@ -78,7 +67,15 @@
         }
         .social-icon:hover { background: #ED1B2E; color: white; transform: scale(1.1); }
         
-        .bio-text { color: #555; margin-bottom: 30px; line-height: 1.6; font-size: 14px; }
+        .bio-text { color: #555; margin-bottom: 15px; line-height: 1.6; font-size: 14px; }
+        
+        /* Gaya Logo Syarikat di bawah teks bio */
+        .company-logo { 
+            max-width: 180px; 
+            height: auto; 
+            margin: 0 auto 25px auto; 
+            display: block; 
+        }
         
         .btn-row { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
         .link-btn { 
@@ -153,6 +150,7 @@
         
         .footer { border-top: 1px solid #eee; padding-top: 20px; font-size: 10px; color: #999; line-height: 1.6; text-align: center; }
 
+        /* RESPONSIVE ADAPTATION */
         @media (min-width: 650px) {
             .card {
                 max-width: 800px;
@@ -168,7 +166,6 @@
             }
         }
 
-        /* UPDATED: Adjustments for horizontal screens to fit the newly placed logo gracefully */
         @media (orientation: landscape) and (max-width: 900px) {
             body {
                 padding: 20px 15px; 
@@ -177,11 +174,7 @@
                 max-width: 100%; 
             }
             .card-header {
-                height: 110px; 
-                padding-top: 10px;
-            }
-            .company-logo {
-                max-width: 120px;
+                height: 90px; 
             }
             .profile-pic {
                 width: 100px;
@@ -195,9 +188,7 @@
 
     <div class="card">
         
-        <div class="card-header">
-            <img src="company-logo.JPG" alt="Company Logo" class="company-logo" onerror="this.style.display='none'">
-        </div>
+        <div class="card-header"></div>
         
         <div class="card-content">
             <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
@@ -213,6 +204,8 @@
             </div>
 
             <p class="bio-text">Sedia bantu tuan/puan untuk dapatkan consultation & quotation takaful yang comprehensive</p>
+            
+            <img src="company-logo.JPG" alt="Company Logo" class="company-logo" onerror="this.style.display='none'">
             
             <div class="btn-row">
                 <a href="#borang-semakan" class="link-btn"><i class="fas fa-clipboard-check"></i> Semak Pelan Sesuai</a>
