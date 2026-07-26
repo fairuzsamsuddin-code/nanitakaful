@@ -1,362 +1,457 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ms" id="htmlTag">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nani Mad Sahad-Professional Profile</title>
+    <title id="pageTitle">TAKAFUL SERVICES - Nani Mad Sahad</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <link rel="apple-touch-icon" href="rms-logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/rms-logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/rms-logo.png">
+    <link rel="shortcut icon" href="/favicon.ico">
 
-    <style>
+    <!-- Tailwind CSS Standardized Config -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Poppins', 'sans-serif'] },
+            colors: {
+              primary: { DEFAULT: '#D9000D', hover: '#b8000b' },
+              teal: { DEFAULT: '#008183', hover: '#005a5c', soft: '#e6f6f5' },
+              background: '#f8fafc',
+            },
+            boxShadow: {
+              'soft': '0 4px 10px rgba(0,0,0,0.03)',
+              'elegant': '0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.01)',
+            }
+          }
+        }
+      }
+    </script>
+    
+    <style type="text/tailwindcss">
+      @layer components {
         html { scroll-behavior: smooth; }
+        .scrollbar-none::-webkit-scrollbar { display: none; }
+        .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
         
-        body { 
-            font-family: 'Poppins', sans-serif; 
-            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
-            display: flex; 
-            justify-content: center; 
-            padding: 40px 20px;
-            margin: 0;
-            min-height: 100vh;
-        }
+        .form-input { @apply block w-full border px-4 py-2 h-12 rounded-xl border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary text-sm transition-colors; }
+        .form-label { @apply text-sm font-semibold text-gray-700 mb-2 block; }
+        .btn-primary { @apply inline-flex items-center justify-center gap-2 whitespace-nowrap cursor-pointer transition-transform hover:-translate-y-0.5 bg-primary text-white hover:bg-primary-hover min-h-[3.5rem] rounded-full px-8 text-sm md:text-base font-semibold shadow-elegant; }
         
-        .card { 
-            background: white; 
-            border-radius: 24px; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.08); 
-            max-width: 400px; 
-            width: 100%; 
-            text-align: center; 
-            box-sizing: border-box;
-            overflow: hidden; 
-            transition: all 0.3s ease; 
-        }
-        
-        /* Pengepala PruBSN Teal */
-        .card-header {
-            background: #00A599; 
-            height: 120px; 
-            width: 100%;
-        }
-
-        .card-content {
-            padding: 0 30px 40px 30px;
-        }
-        
-        .profile-pic { 
-            width: 120px; 
-            height: 120px; 
-            border-radius: 50%; 
-            object-fit: cover; 
-            border: 4px solid #fff;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-top: -60px; 
-            position: relative;
-            background: white;
-        }
-        
-        h1 { margin: 15px 0 5px 0; font-size: 24px; color: #1a1a1a; font-weight: 700; }
-        .subtitle { color: #ED1B2E; font-weight: 600; font-size: 14px; margin-top: 0; margin-bottom: 20px; }
-        
-        .social-row { display: flex; justify-content: center; gap: 15px; margin-bottom: 25px; }
-        .social-icon {
-            display: flex; align-items: center; justify-content: center;
-            width: 40px; height: 40px; border-radius: 50%; background: #f0f2f5;
-            color: #333; text-decoration: none; font-size: 18px; transition: all 0.2s ease;
-        }
-        .social-icon:hover { background: #ED1B2E; color: white; transform: scale(1.1); }
-        
-        .bio-text { color: #555; margin-bottom: 15px; line-height: 1.6; font-size: 14px; }
-        
-        /* Gaya Logo Syarikat di bawah teks bio */
-        .company-logo { 
-            max-width: 180px; 
-            height: auto; 
-            margin: 0 auto 25px auto; 
-            display: block; 
-        }
-        
-        .btn-row { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
-        .link-btn { 
-            display: block; background: #f8f9fa; color: #333; text-decoration: none; 
-            padding: 14px; border-radius: 50px; font-weight: 600; font-size: 15px;
-            border: 1px solid #e1e4e8; transition: all 0.2s ease; cursor: pointer;
-        }
-        .link-btn:hover { background: #fdf3f4; border-color: #ED1B2E; color: #ED1B2E; }
-        
-        .whatsapp-btn { background: #25D366; color: white; border: none; }
-        .whatsapp-btn:hover { background: #1ebd5a; color: white; }
-        
-        .features-row { display: flex; justify-content: center; gap: 10px; margin-bottom: 35px; }
-        .feature-item {
-            font-size: 11px; font-weight: 600; color: #444; display: flex;
-            flex-direction: column; align-items: center; gap: 5px; flex: 1;
-        }
-        .feature-item i { font-size: 18px; color: #00A599; background: #e6f6f5; padding: 10px; border-radius: 50%; }
-
-        .section-title { text-align: left; font-size: 18px; font-weight: 700; margin-bottom: 5px; }
-        .section-subtitle { text-align: left; font-size: 12px; color: #777; margin-bottom: 20px; }
-        .section-subtitle i { color: #ED1B2E; }
-        
-        .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 40px; }
-        .grid-card {
-            background: #fff; border: 1px solid #eaeaea; padding: 15px 10px;
-            border-radius: 12px; font-size: 13px; font-weight: 600; color: #333;
-            display: flex; flex-direction: column; align-items: center; gap: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02); transition: all 0.2s ease; cursor: pointer;
-        }
-        .grid-card:hover { border-color: #ED1B2E; transform: translateY(-3px); }
-        .grid-card.active { border-color: #ED1B2E; background-color: #fdf3f4; transform: translateY(-3px); box-shadow: 0 8px 15px rgba(237, 27, 46, 0.15); }
-        .grid-card i { font-size: 20px; color: #ED1B2E; }
-
-        .form-section {
-            background: #fff; padding: 30px 0 10px 0; text-align: left; margin-bottom: 30px;
-            border-top: 1px solid #eee;
-        }
-        
-        .badge {
-            background: #fdf3f4; color: #ED1B2E; padding: 6px 16px; border: 1px solid #fbd8db;
-            border-radius: 20px; font-size: 11px; font-weight: 700; display: inline-block; margin-bottom: 15px;
-        }
-        .form-section h3 { font-size: 20px; margin: 0 0 10px 0; color: #1a1a1a; text-align: center; }
-        .form-section p { font-size: 12px; margin-bottom: 25px; color: #777; text-align: center; }
-        
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
-        .form-group { display: flex; flex-direction: column; margin-bottom: 15px; }
-        
-        .form-label { font-size: 12px; font-weight: 600; color: #333; margin-bottom: 6px; }
-        .required { color: #ED1B2E; }
-        
-        input[type="text"], input[type="number"], select, textarea {
-            width: 100%; padding: 12px; border: 1px solid #e1e4e8; border-radius: 8px;
-            box-sizing: border-box; font-family: inherit; font-size: 13px; background-color: #fff;
-            color: #333;
-        }
-        input::placeholder, textarea::placeholder { color: #adb5bd; }
-        input:focus, select:focus, textarea:focus { outline: none; border-color: #00A599; box-shadow: 0 0 0 3px rgba(0, 165, 153, 0.1); }
-        
-        .radio-group { display: flex; gap: 15px; align-items: center; margin-top: 5px; }
-        .radio-group label { font-size: 13px; color: #333; font-weight: 400; cursor: pointer; display: flex; align-items: center; gap: 6px; }
-        .radio-group input[type="radio"] { width: auto; margin: 0; cursor: pointer; accent-color: #ED1B2E; }
-        
-        textarea { resize: vertical; min-height: 80px; }
-
-        .form-submit-btn {
-            width: 100%; padding: 14px; border-radius: 8px; font-size: 15px;
-            font-weight: 600; cursor: pointer; margin-top: 10px; background: #ED1B2E; color: white; border: none;
-        }
-        .form-submit-btn:hover { background: #c81625; }
-        
-        .footer { border-top: 1px solid #eee; padding-top: 20px; font-size: 10px; color: #999; line-height: 1.6; text-align: center; }
-
-        /* RESPONSIVE ADAPTATION */
-        @media (min-width: 650px) {
-            .card {
-                max-width: 800px;
-            }
-            .btn-row {
-                flex-direction: row; 
-            }
-            .btn-row .link-btn {
-                flex: 1; 
-            }
-            .grid-container {
-                grid-template-columns: repeat(4, 1fr); 
-            }
-        }
-
-        @media (orientation: landscape) and (max-width: 900px) {
-            body {
-                padding: 20px 15px; 
-            }
-            .card {
-                max-width: 100%; 
-            }
-            .card-header {
-                height: 90px; 
-            }
-            .profile-pic {
-                width: 100px;
-                height: 100px;
-                margin-top: -50px;
-            }
-        }
+        .grid-card { @apply bg-white border border-gray-200 p-6 rounded-2xl flex flex-col items-center gap-3 shadow-sm transition-all cursor-pointer hover:-translate-y-1 hover:border-primary; text-align: center; }
+        .grid-card i { @apply text-3xl text-primary; }
+        .grid-card span { @apply font-semibold text-sm text-gray-800; }
+        .grid-card.active { @apply border-primary bg-red-50 shadow-md transform -translate-y-1; }
+      }
     </style>
 </head>
-<body>
+<body class="bg-background text-gray-800 antialiased min-h-screen flex flex-col">
 
-    <div class="card">
-        
-        <div class="card-header"></div>
-        
-        <div class="card-content">
-            <img src="profile.jpeg" alt="Profile Picture" class="profile-pic">
-            <h1>Nani Mad Sahad</h1>
+    <!-- Unified Top Navigation Bar (Sticky, always visible) -->
+    <nav class="sticky top-0 z-50 bg-white shadow-sm border-b border-gray-200">
+        <div class="mx-auto flex max-w-6xl items-center px-4 py-3 gap-5 overflow-x-auto scrollbar-none">
+            <!-- Brand -->
+            <a href="#top" class="flex items-center gap-3 shrink-0">
+                <img src="rms-logo.png" alt="RMS Logo" class="h-10 w-10 object-contain">
+                <div class="flex flex-col">
+                    <span class="text-[14px] font-black uppercase tracking-tight text-primary leading-none" data-translate="brand_title">TAKAFUL SERVICES</span>
+                    <span class="mt-1 text-[11px] font-medium text-gray-500 leading-none" data-translate="brand_sub">by Nani Mad Sahad</span>
+                </div>
+            </a>
+
+            <!-- Language Toggle Button placed second -->
+            <button onclick="toggleLanguage()" id="langBtn" class="flex items-center gap-1.5 rounded-full border border-gray-300 bg-gray-50 px-3 py-2 text-xs font-bold text-gray-700 shadow-sm transition-colors hover:bg-gray-100 shrink-0">
+                <i class="fas fa-globe text-primary"></i> <span id="langText">EN</span>
+            </button>
             
-            <p class="subtitle">Your go-to advisor for honest, reliable Takaful planning</p>
-
-            <div class="social-row">
-                <a href="https://www.facebook.com/share/1BcYCUj33D/?mibextid=wwXIfr" class="social-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/me_nani/" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://threads.net/@me_nani" class="social-icon" target="_blank"><i class="fa-brands fa-threads"></i></a>
-                <a href="https://tiktok.com/@ms_rigidius" class="social-icon" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <!-- Navigation Links -->
+            <div class="flex items-center gap-5 shrink-0">
+                <a href="#profil" class="flex items-center gap-2 text-gray-600 hover:text-primary transition-colors py-1">
+                    <i class="far fa-user text-gray-400 text-lg"></i>
+                    <span class="text-xs font-bold whitespace-nowrap" data-translate="nav_profile">Profil</span>
+                </a>
+                <a href="#pilihan-pelan" class="flex items-center gap-2 text-gray-600 hover:text-primary transition-colors py-1">
+                    <i class="fas fa-hand-holding-heart text-gray-400 text-lg"></i>
+                    <span class="text-xs font-bold whitespace-nowrap" data-translate="nav_plans">Pilihan Pelan</span>
+                </a>
+                <a href="#borang-semakan" class="flex items-center gap-2 text-gray-600 hover:text-primary transition-colors py-1">
+                    <i class="far fa-clipboard text-gray-400 text-lg"></i>
+                    <span class="text-xs font-bold whitespace-nowrap" data-translate="nav_form">Borang Semakan</span>
+                </a>
             </div>
-
-            <img src="company-logo.JPG" alt="Company Logo" class="company-logo" onerror="this.style.display='none'">
             
-            <p class="bio-text">Membantu anda mendapatkan pelan perlindungan Takaful yang lengkap dan jelas</p>
-            
-            <div class="btn-row">
-                <a href="#borang-semakan" class="link-btn"><i class="fas fa-clipboard-check"></i> Semak Pelan Sesuai</a>
-                <a href="https://wa.me/60173128022" class="link-btn whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Saya</a>
+            <!-- WhatsApp CTA pushed to the right -->
+            <div class="ml-auto flex items-center shrink-0">
+                <a href="https://wa.me/60173128022" target="_blank" class="flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-xs font-bold text-white shadow-sm transition-colors hover:bg-primary-hover">
+                    <i class="fab fa-whatsapp text-base"></i> WhatsApp
+                </a>
             </div>
+        </div>
+    </nav>
 
-            <div class="features-row">
-                <div class="feature-item"><i class="fas fa-shield-halved"></i><span>Patuh Syariah</span></div>
-                <div class="feature-item"><i class="fas fa-mug-hot"></i><span>Sesi Santai</span></div>
-                <div class="feature-item"><i class="fas fa-wallet"></i><span>Bajet Mesra</span></div>
+    <!-- Main Content -->
+    <main class="flex-grow max-w-5xl mx-auto w-full px-4 py-10 space-y-16">
+
+        <!-- Profile Section -->
+        <section id="profil" class="bg-white rounded-3xl shadow-elegant border border-gray-100 p-8 md:p-10 flex flex-col md:flex-row gap-10 items-center scroll-mt-28">
+            <div class="w-48 h-48 md:w-56 md:h-56 shrink-0 rounded-[2rem] overflow-hidden border-4 border-white shadow-lg relative">
+                <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-teal/20 rounded-[2rem]"></div>
+                <img src="profile.jpg" alt="Profile Picture" class="w-full h-full object-cover relative z-10 rounded-[1.8rem]">
             </div>
-
-            <h2 class="section-title">Pilihan Yang Boleh Disemak</h2>
-            <p class="section-subtitle"><i class="fas fa-hand-pointer"></i> Klik kad untuk pilih</p>
             
-            <div class="grid-container" id="planGrid">
+            <div class="text-center md:text-left flex-1">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-900">NANI MAD SAHAD</h1>
+                <p class="text-primary font-semibold text-base md:text-lg mt-1 tracking-wide uppercase" data-translate="profile_role">Perunding Takaful Berdaftar PruBSN</p>
+                
+                <div class="flex justify-center md:justify-start gap-3 mt-4">
+                    <a href="https://www.facebook.com/rosnani.sahad" target="_blank" class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-all hover:scale-110"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/me_nani/" target="_blank" class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-all hover:scale-110"><i class="fab fa-instagram"></i></a>
+                    <a href="https://threads.net/@me_nani" target="_blank" class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-all hover:scale-110"><i class="fa-brands fa-threads"></i></a>
+                    <a href="https://tiktok.com/@ms_rigidius" target="_blank" class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition-all hover:scale-110"><i class="fab fa-tiktok"></i></a>
+                </div>
+
+                <p class="text-gray-500 mt-5 text-sm md:text-base leading-relaxed" data-translate="profile_desc">Membantu anda mendapatkan pelan perlindungan Takaful yang lengkap dan jelas bersesuaian dengan bajet keluarga anda.</p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 mt-8">
+                    <a href="#borang-semakan" class="btn-primary flex-1">
+                        <i class="fas fa-clipboard-check text-lg"></i> <span data-translate="btn_check">Semak Pelan Sesuai</span>
+                    </a>
+                    <a href="https://wa.me/60173128022" target="_blank" class="inline-flex flex-1 items-center justify-center gap-2 whitespace-nowrap cursor-pointer transition-colors border shadow-sm min-h-[3.5rem] rounded-full border-teal/40 bg-teal-soft px-8 text-sm md:text-base font-semibold text-teal hover:bg-teal hover:text-white">
+                        <i class="fab fa-whatsapp text-lg"></i> <span data-translate="btn_whatsapp">WhatsApp Saya</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="bg-white rounded-3xl shadow-soft border border-gray-100 p-8 md:p-12 text-center">
+            <div class="relative flex flex-col md:flex-row justify-center gap-10 md:gap-5 items-center">
+                <div class="hidden md:block absolute top-1/2 left-[10%] right-[10%] h-0.5 bg-teal -translate-y-1/2 z-0"></div>
+                <div class="block md:hidden absolute top-[10%] bottom-[10%] left-1/2 w-0.5 bg-teal -translate-x-1/2 z-0"></div>
+
+                <div class="flex flex-col items-center gap-4 flex-1 z-10 bg-white md:bg-transparent px-4">
+                    <div class="w-14 h-14 rounded-full bg-teal text-white flex items-center justify-center text-xl shadow-md"><i class="fas fa-shield-halved"></i></div>
+                    <span class="font-semibold text-gray-700 bg-white px-3 py-1 rounded-lg text-sm" data-translate="feat_syariah">Patuh Syariah</span>
+                </div>
+                <div class="flex flex-col items-center gap-4 flex-1 z-10 bg-white md:bg-transparent px-4">
+                    <div class="w-14 h-14 rounded-full bg-teal text-white flex items-center justify-center text-xl shadow-md"><i class="fas fa-mug-hot"></i></div>
+                    <span class="font-semibold text-gray-700 bg-white px-3 py-1 rounded-lg text-sm" data-translate="feat_casual">Sesi Santai</span>
+                </div>
+                <div class="flex flex-col items-center gap-4 flex-1 z-10 bg-white md:bg-transparent px-4">
+                    <div class="w-14 h-14 rounded-full bg-teal text-white flex items-center justify-center text-xl shadow-md"><i class="fas fa-wallet"></i></div>
+                    <span class="font-semibold text-gray-700 bg-white px-3 py-1 rounded-lg text-sm" data-translate="feat_budget">Bajet Mesra</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Selection Grid Section -->
+        <section id="pilihan-pelan" class="scroll-mt-28">
+            <div class="mb-6 text-center md:text-left">
+                <h2 class="text-2xl font-bold text-gray-900" data-translate="grid_title">Pilihan Yang Boleh Disemak</h2>
+                <p class="text-sm text-gray-500 mt-1"><i class="fas fa-hand-pointer text-primary"></i> <span data-translate="grid_subtitle">Klik kad di bawah untuk memilih</span></p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="planGrid">
                 <div class="grid-card" onclick="selectPlan('Medical Card', this)">
-                    <i class="fas fa-heartbeat"></i><span>Medical Card</span>
+                    <i class="fas fa-heartbeat"></i><span data-translate="plan_med">Medical Card</span>
                 </div>
                 <div class="grid-card" onclick="selectPlan('Hibah Takaful', this)">
-                    <i class="fas fa-gift"></i><span>Hibah</span>
+                    <i class="fas fa-gift"></i><span data-translate="plan_hibah">Hibah</span>
                 </div>
                 <div class="grid-card" onclick="selectPlan('Income Protection', this)">
-                    <i class="fas fa-briefcase"></i><span>Income Protection</span>
+                    <i class="fas fa-briefcase"></i><span data-translate="plan_income">Income Protection</span>
                 </div>
                 <div class="grid-card" onclick="selectPlan('Sakit Kritikal', this)">
-                    <i class="fas fa-user-md"></i><span>Sakit Kritikal</span>
+                    <i class="fas fa-user-md"></i><span data-translate="plan_critical">Sakit Kritikal</span>
                 </div>
             </div>
+        </section>
 
-            <div class="form-section" id="borang-semakan">
-                <div style="text-align: center;">
-                    <span class="badge">KONSULTASI PERCUMA</span>
-                    <h3>Semak Pelan Takaful Sesuai</h3>
-                    <p>Isi butiran ringkas di bawah. Mesej draf akan dihantar terus ke WhatsApp <strong>Nani Mad Sahad</strong>.</p>
-                </div>
-                
-                <form id="takafulForm">
-                    
-                    <div class="form-row">
-                        <div class="form-group" style="margin-bottom: 0;">
-                            <label class="form-label">Nama Penuh <span class="required">*</span></label>
-                            <input type="text" id="clientName" placeholder="Contoh: Ahmad" required>
+        <!-- Form Section -->
+        <section id="borang-semakan" class="bg-white rounded-3xl shadow-elegant border border-gray-100 overflow-hidden scroll-mt-28">
+            <div class="bg-gradient-to-r from-primary to-[#b8000b] text-white p-8 text-center">
+                <span class="bg-white/20 text-white px-4 py-1.5 rounded-full text-xs font-bold inline-block mb-4 backdrop-blur-sm tracking-wider uppercase" data-translate="form_badge">Konsultasi Percuma</span>
+                <h3 class="text-2xl md:text-3xl font-bold mb-2" data-translate="form_title">Semak Pelan Takaful Sesuai</h3>
+                <p class="text-sm text-white/90"><span data-translate="form_subtitle">Isi butiran ringkas. Mesej draf akan dihantar terus ke WhatsApp</span> <strong>Nani Mad Sahad</strong>.</p>
+            </div>
+            
+            <div class="p-8 md:p-10">
+                <form id="takafulForm" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="form-label"><span data-translate="label_name">Nama Penuh</span> <span class="text-primary">*</span></label>
+                            <input type="text" id="clientName" class="form-input" placeholder="Contoh: Ahmad" required>
                         </div>
-                        <div class="form-group" style="margin-bottom: 0;">
-                            <label class="form-label">Tarikh Lahir <span class="required">*</span></label>
-                            <input type="text" id="clientDob" placeholder="Contoh: 12/05/1990" required>
+                        <div>
+                            <label class="form-label"><span data-translate="label_dob">Tarikh Lahir</span> <span class="text-primary">*</span></label>
+                            <input type="text" id="clientDob" class="form-input" placeholder="Contoh: 12/05/1990" maxlength="10" required>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-label">No Telefon <span class="required">*</span></label>
-                        <input type="text" id="clientPhone" placeholder="Contoh: 0123456789" required>
+                    <div>
+                        <label class="form-label"><span data-translate="label_phone">No Telefon</span> <span class="text-primary">*</span></label>
+                        <input type="tel" id="clientPhone" class="form-input" placeholder="Contoh: 0123456789" required>
                     </div>
 
-                    <div class="form-row">
-                        <div class="form-group" style="margin-bottom: 0;">
-                            <label class="form-label">Jantina <span class="required">*</span></label>
-                            <select id="clientGender" required>
-                                <option value="" disabled selected>Pilih</option>
-                                <option value="Lelaki">Lelaki</option>
-                                <option value="Perempuan">Perempuan</option>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="form-label"><span data-translate="label_gender">Jantina</span> <span class="text-primary">*</span></label>
+                            <select id="clientGender" class="form-input" required>
+                                <option value="" disabled selected data-translate="opt_select">Pilih</option>
+                                <option value="Lelaki" data-translate="opt_male">Lelaki</option>
+                                <option value="Perempuan" data-translate="opt_female">Perempuan</option>
                             </select>
                         </div>
-                        <div class="form-group" style="margin-bottom: 0;">
-                            <label class="form-label">Merokok <span class="required">*</span></label>
-                            <select id="clientSmoker" required>
-                                <option value="" disabled selected>Pilih</option>
-                                <option value="Tidak">Tidak</option>
-                                <option value="Ya">Ya</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group" style="margin-bottom: 0;">
-                            <label class="form-label">Pekerjaan <span class="required">*</span></label>
-                            <input type="text" id="clientJob" placeholder="Cth: Executive, Polis" required>
-                        </div>
-                        <div class="form-group" style="margin-bottom: 0;">
-                            <label class="form-label">Status <span class="required">*</span></label>
-                            <select id="clientStatus" required>
-                                <option value="" disabled selected>Pilih</option>
-                                <option value="Bujang">Bujang</option>
-                                <option value="Berkahwin">Berkahwin</option>
+                        <div>
+                            <label class="form-label"><span data-translate="label_smoker">Merokok</span> <span class="text-primary">*</span></label>
+                            <select id="clientSmoker" class="form-input" required>
+                                <option value="" disabled selected data-translate="opt_select">Pilih</option>
+                                <option value="Tidak" data-translate="opt_no">Tidak</option>
+                                <option value="Ya" data-translate="opt_yes">Ya</option>
                             </select>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-label">Pendapatan Tahunan (Annual Income) <span class="required">*</span></label>
-                        <select id="clientIncome" required>
-                            <option value="" disabled selected>Pilih Anggaran Pendapatan</option>
-                            <option value="Bawah RM24,000">Bawah RM24,000</option>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="form-label"><span data-translate="label_job">Pekerjaan</span> <span class="text-primary">*</span></label>
+                            <input type="text" id="clientJob" class="form-input" placeholder="Cth: Executive, Polis" required>
+                        </div>
+                        <div>
+                            <label class="form-label"><span data-translate="label_status">Status</span> <span class="text-primary">*</span></label>
+                            <select id="clientStatus" class="form-input" required>
+                                <option value="" disabled selected data-translate="opt_select">Pilih</option>
+                                <option value="Bujang" data-translate="opt_single">Bujang</option>
+                                <option value="Berkahwin" data-translate="opt_married">Berkahwin</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="form-label"><span data-translate="label_income">Pendapatan Tahunan</span> <span class="text-primary">*</span></label>
+                        <select id="clientIncome" class="form-input" required>
+                            <option value="" disabled selected data-translate="opt_income">Pilih Anggaran Pendapatan</option>
+                            <option value="Bawah RM24,000" data-translate="inc_1">Bawah RM24,000</option>
                             <option value="RM24,000 - RM36,000">RM24,000 - RM36,000</option>
                             <option value="RM36,000 - RM48,000">RM36,000 - RM48,000</option>
                             <option value="RM48,000 - RM60,000">RM48,000 - RM60,000</option>
-                            <option value="RM60,000 ke atas">RM60,000 ke atas</option>
+                            <option value="RM60,000 ke atas" data-translate="inc_5">RM60,000 ke atas</option>
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-label">Bajet Bulanan Selesa <span class="required">*</span></label>
-                        <select id="clientBudget" required>
-                            <option value="" disabled selected>Pilih Anggaran Bajet</option>
+                    <div>
+                        <label class="form-label"><span data-translate="label_budget">Bajet Bulanan Selesa</span> <span class="text-primary">*</span></label>
+                        <select id="clientBudget" class="form-input" required>
+                            <option value="" disabled selected data-translate="opt_budget">Pilih Anggaran Bajet</option>
                             <option value="RM50 - RM200">RM50 - RM200</option>
                             <option value="RM201 - RM300">RM201 - RM300</option>
                             <option value="RM301 - RM400">RM301 - RM400</option>
-                            <option value="RM401 ke atas">RM401 ke atas</option>
+                            <option value="RM401 ke atas" data-translate="bud_4">RM401 ke atas</option>
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-label">Perlindungan Ingin Disemak <span class="required">*</span></label>
-                        <select id="clientPlan" required>
-                            <option value="" disabled selected>Pilih Perlindungan Utama</option>
+                    <div>
+                        <label class="form-label"><span data-translate="label_protection">Perlindungan Ingin Disemak</span> <span class="text-primary">*</span></label>
+                        <select id="clientPlan" class="form-input" required>
+                            <option value="" disabled selected data-translate="opt_protection">Pilih Perlindungan Utama</option>
                             <option value="Medical Card">Medical Card</option>
                             <option value="Hibah Takaful">Hibah Takaful</option>
                             <option value="Income Protection">Income Protection</option>
-                            <option value="Sakit Kritikal">Sakit Kritikal</option>
-                            <option value="Pendidikan Anak">Pendidikan Anak</option>
-                            <option value="Belum Pasti / Nak Konsultasi">Belum Pasti / Nak Konsultasi</option>
+                            <option value="Sakit Kritikal" data-translate="prot_critical">Sakit Kritikal</option>
+                            <option value="Pendidikan Anak" data-translate="prot_child">Pendidikan Anak</option>
+                            <option value="Belum Pasti / Nak Konsultasi" data-translate="opt_consult">Belum Pasti / Nak Konsultasi</option>
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-label">Adakah anda mempunyai polisi aktif?</label>
-                        <div class="radio-group">
-                            <label><input type="radio" name="polisiAktif" value="Ya, sudah ada"> Ya, sudah ada</label>
-                            <label><input type="radio" name="polisiAktif" value="Tidak, belum ada" checked> Tidak, belum ada</label>
+                    <div>
+                        <label class="form-label" data-translate="label_policy">Adakah anda mempunyai polisi aktif?</label>
+                        <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-3">
+                            <label class="flex items-center gap-2 cursor-pointer text-sm text-gray-700"><input type="radio" name="polisiAktif" value="Ya, sudah ada" class="accent-primary w-4 h-4"> <span data-translate="radio_yes">Ya, sudah ada</span></label>
+                            <label class="flex items-center gap-2 cursor-pointer text-sm text-gray-700"><input type="radio" name="polisiAktif" value="Tidak, belum ada" checked class="accent-primary w-4 h-4"> <span data-translate="radio_no">Tidak, belum ada</span></label>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-label">Mesej Tambahan (Optional)</label>
-                        <textarea id="clientMessage" placeholder="Tulis soalan atau nota khas anda di sini..."></textarea>
+                    <div>
+                        <label class="form-label" data-translate="label_msg">Mesej Tambahan (Optional)</label>
+                        <textarea id="clientMessage" class="form-input h-auto min-h-[100px] py-3" placeholder="Tulis soalan atau nota khas anda di sini..."></textarea>
                     </div>
 
-                    <button type="submit" class="form-submit-btn">Hantar Ke WhatsApp</button>
+                    <button type="submit" class="btn-primary w-full mt-4 text-base"><span data-translate="btn_submit">Hantar Ke WhatsApp</span> <i class="fab fa-whatsapp ml-1 text-lg"></i></button>
                 </form>
             </div>
+        </section>
 
-            <div class="footer">
-                <p>© 2026 Nani Mad Sahad. Hak Cipta Terpelihara.<br>
-                Perunding Takaful Berdaftar dengan Prudential BSN Takaful Berhad.</p>
+    </main>
+
+    <!-- Unified Footer -->
+    <footer class="border-t border-border bg-white py-10 mt-auto">
+        <div class="mx-auto max-w-6xl px-6">
+            <div class="flex flex-col items-center justify-between gap-4 text-xs text-gray-500 md:flex-row text-center md:text-left">
+                <p data-translate="footer_reg">Perunding Takaful Berdaftar dengan PruBSN Takaful Berhad.</p>
+                <p>© 2026 Nani Mad Sahad. <span data-translate="footer_rights">Hak Cipta Terpelihara.</span></p>
+                <p data-translate="footer_portal">Portal Servis Rasmi Nani Mad Sahad</p>
             </div>
-            
         </div>
-    </div>
+    </footer>
 
+    <!-- Scripts -->
     <script>
+        // Language Dictionary Data
+        const translations = {
+            ms: {
+                brand_title: "TAKAFUL SERVICES",
+                brand_sub: "by Nani Mad Sahad",
+                nav_profile: "Profil",
+                nav_plans: "Pilihan Pelan",
+                nav_form: "Borang Semakan",
+                profile_role: "Perunding Takaful Berdaftar PruBSN",
+                profile_desc: "Membantu anda mendapatkan pelan perlindungan Takaful yang lengkap dan jelas bersesuaian dengan bajet keluarga anda.",
+                btn_check: "Semak Pelan Sesuai",
+                btn_whatsapp: "WhatsApp Saya",
+                feat_syariah: "Patuh Syariah",
+                feat_casual: "Sesi Santai",
+                feat_budget: "Bajet Mesra",
+                grid_title: "Pilihan Yang Boleh Disemak",
+                grid_subtitle: "Klik kad di bawah untuk memilih",
+                plan_med: "Medical Card",
+                plan_hibah: "Hibah",
+                plan_income: "Income Protection",
+                plan_critical: "Sakit Kritikal",
+                form_badge: "Konsultasi Percuma",
+                form_title: "Semak Pelan Takaful Sesuai",
+                form_subtitle: "Isi butiran ringkas. Mesej draf akan dihantar terus ke WhatsApp",
+                label_name: "Nama Penuh",
+                label_dob: "Tarikh Lahir",
+                label_phone: "No Telefon",
+                label_gender: "Jantina",
+                label_smoker: "Merokok",
+                label_job: "Pekerjaan",
+                label_status: "Status",
+                label_income: "Pendapatan Tahunan",
+                label_budget: "Bajet Bulanan Selesa",
+                label_protection: "Perlindungan Ingin Disemak",
+                label_policy: "Adakah anda mempunyai polisi aktif?",
+                label_msg: "Mesej Tambahan (Optional)",
+                opt_select: "Pilih",
+                opt_male: "Lelaki",
+                opt_female: "Perempuan",
+                opt_no: "Tidak",
+                opt_yes: "Ya",
+                opt_single: "Bujang",
+                opt_married: "Berkahwin",
+                opt_income: "Pilih Anggaran Pendapatan",
+                inc_1: "Bawah RM24,000",
+                inc_5: "RM60,000 ke atas",
+                opt_budget: "Pilih Anggaran Bajet",
+                bud_4: "RM401 ke atas",
+                opt_protection: "Pilih Perlindungan Utama",
+                prot_critical: "Sakit Kritikal",
+                prot_child: "Pendidikan Anak",
+                opt_consult: "Belum Pasti / Nak Konsultasi",
+                radio_yes: "Ya, sudah ada",
+                radio_no: "Tidak, belum ada",
+                btn_submit: "Hantar Ke WhatsApp",
+                footer_reg: "Perunding Takaful Berdaftar dengan PruBSN Takaful Berhad.",
+                footer_rights: "Hak Cipta Terpelihara.",
+                footer_portal: "Portal Servis Rasmi Nani Mad Sahad"
+            },
+            en: {
+                brand_title: "TAKAFUL SERVICES",
+                brand_sub: "by Nani Mad Sahad",
+                nav_profile: "Profile",
+                nav_plans: "Plan Options",
+                nav_form: "Review Form",
+                profile_role: "Authorized PruBSN Takaful Consultant",
+                profile_desc: "Helping you secure comprehensive and clear Takaful protection plans suited to your family budget.",
+                btn_check: "Check Suitable Plan",
+                btn_whatsapp: "WhatsApp Me",
+                feat_syariah: "Syariah Compliant",
+                feat_casual: "Relaxed Session",
+                feat_budget: "Budget Friendly",
+                grid_title: "Available Plans to Review",
+                grid_subtitle: "Click a card below to select",
+                plan_med: "Medical Card",
+                plan_hibah: "Hibah",
+                plan_income: "Income Protection",
+                plan_critical: "Critical Illness",
+                form_badge: "Free Consultation",
+                form_title: "Review Suitable Takaful Plan",
+                form_subtitle: "Fill in brief details. A draft message will be sent directly to WhatsApp",
+                label_name: "Full Name",
+                label_dob: "Date of Birth",
+                label_phone: "Phone Number",
+                label_gender: "Gender",
+                label_smoker: "Smoker Status",
+                label_job: "Occupation",
+                label_status: "Marital Status",
+                label_income: "Annual Income",
+                label_budget: "Comfortable Monthly Budget",
+                label_protection: "Protection to Review",
+                label_policy: "Do you have an active policy?",
+                label_msg: "Additional Message (Optional)",
+                opt_select: "Select",
+                opt_male: "Male",
+                opt_female: "Female",
+                opt_no: "No",
+                opt_yes: "Yes",
+                opt_single: "Single",
+                opt_married: "Married",
+                opt_income: "Select Estimated Income",
+                inc_1: "Under RM24,000",
+                inc_5: "RM60,000 and above",
+                opt_budget: "Select Estimated Budget",
+                bud_4: "RM401 and above",
+                opt_protection: "Select Main Protection",
+                prot_critical: "Critical Illness",
+                prot_child: "Children Education",
+                opt_consult: "Unsure / Need Consultation",
+                radio_yes: "Yes, already have",
+                radio_no: "No, don't have yet",
+                btn_submit: "Send to WhatsApp",
+                footer_reg: "Authorized Takaful Consultant with PruBSN Takaful Berhad.",
+                footer_rights: "All Rights Reserved.",
+                footer_portal: "Official Service Portal of Nani Mad Sahad"
+            }
+        };
+
+        let currentLang = 'ms';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ms' ? 'en' : 'ms';
+            document.getElementById('langText').innerText = currentLang === 'ms' ? 'EN' : 'MS';
+            document.getElementById('htmlTag').setAttribute('lang', currentLang);
+
+            // Update all elements with data-translate attribute
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (translations[currentLang][key]) {
+                    el.innerText = translations[currentLang][key];
+                }
+            });
+
+            // Update form placeholders based on language
+            if (currentLang === 'en') {
+                document.getElementById('clientName').placeholder = "Example: Ahmad";
+                document.getElementById('clientDob').placeholder = "Example: 12/05/1990";
+                document.getElementById('clientPhone').placeholder = "Example: 0123456789";
+                document.getElementById('clientJob').placeholder = "Ex: Executive, Police";
+                document.getElementById('clientMessage').placeholder = "Write your questions or special notes here...";
+            } else {
+                document.getElementById('clientName').placeholder = "Contoh: Ahmad";
+                document.getElementById('clientDob').placeholder = "Contoh: 12/05/1990";
+                document.getElementById('clientPhone').placeholder = "Contoh: 0123456789";
+                document.getElementById('clientJob').placeholder = "Cth: Executive, Polis";
+                document.getElementById('clientMessage').placeholder = "Tulis soalan atau nota khas anda di sini...";
+            }
+        }
+
         function selectPlan(planName, clickedElement) {
             var cards = document.querySelectorAll('.grid-card');
             cards.forEach(function(card) {
@@ -369,6 +464,19 @@
 
             document.getElementById('borang-semakan').scrollIntoView({ behavior: 'smooth' });
         }
+
+        // Auto-format Date of Birth field with slashes (DD/MM/YYYY)
+        const dobInput = document.getElementById('clientDob');
+        dobInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, ''); 
+            if (value.length > 8) value = value.slice(0, 8); 
+            if (value.length >= 5) {
+                value = value.slice(0, 2) + '/' + value.slice(2, 4) + '/' + value.slice(4);
+            } else if (value.length >= 3) {
+                value = value.slice(0, 2) + '/' + value.slice(2);
+            }
+            e.target.value = value;
+        });
 
         document.getElementById('takafulForm').addEventListener('submit', function(e) {
             e.preventDefault(); 
@@ -388,21 +496,32 @@
             
             var phoneNumber = "60173128022"; 
             
-            var message = "Hai, saya berminat untuk buat semakan pelan Takaful percuma. Ini butiran saya:\n\n" +
-                          "👤 *Nama:* " + name + "\n" +
-                          "📅 *Tarikh Lahir:* " + dob + "\n" +
-                          "📱 *No Telefon:* " + phone + "\n" +
-                          "🚻 *Jantina:* " + gender + " | 🚬 *Merokok:* " + smoker + "\n" +
-                          "💼 *Pekerjaan:* " + job + " | 💍 *Status:* " + status + "\n" +
-                          "💵 *Pendapatan:* " + income + "\n" +
-                          "💰 *Bajet:* " + budget + "\n" +
-                          "🛡️ *Pelan Pilihan:* " + plan + "\n" +
-                          "📋 *Polisi Aktif:* " + policy;
+            var message = (currentLang === 'ms') 
+                ? "Hai, saya berminat untuk buat semakan pelan Takaful percuma. Ini butiran saya:\n\n" +
+                  "👤 *Nama:* " + name + "\n" +
+                  "📅 *Tarikh Lahir:* " + dob + "\n" +
+                  "📱 *No Telefon:* " + phone + "\n" +
+                  "🚻 *Jantina:* " + gender + " | 🚬 *Merokok:* " + smoker + "\n" +
+                  "💼 *Pekerjaan:* " + job + " | 💍 *Status:* " + status + "\n" +
+                  "💵 *Pendapatan:* " + income + "\n" +
+                  "💰 *Bajet:* " + budget + "\n" +
+                  "🛡️ *Pelan Pilihan:* " + plan + "\n" +
+                  "📋 *Polisi Aktif:* " + policy
+                : "Hi, I am interested in getting a free Takaful plan review. Here are my details:\n\n" +
+                  "👤 *Name:* " + name + "\n" +
+                  "📅 *DOB:* " + dob + "\n" +
+                  "📱 *Phone:* " + phone + "\n" +
+                  "🚻 *Gender:* " + gender + " | 🚬 *Smoker:* " + smoker + "\n" +
+                  "💼 *Job:* " + job + " | 💍 *Status:* " + status + "\n" +
+                  "💵 *Income:* " + income + "\n" +
+                  "💰 *Budget:* " + budget + "\n" +
+                  "🛡️ *Chosen Plan:* " + plan + "\n" +
+                  "📋 *Active Policy:* " + policy;
             
             if(addMessage.trim() !== "") {
-                message += "\n\n📝 *Nota Tambahan:*\n" + addMessage;
+                message += (currentLang === 'ms') ? "\n\n📝 *Nota Tambahan:*\n" + addMessage : "\n\n📝 *Additional Notes:*\n" + addMessage;
             } else {
-                message += "\n\nMohon bantu saya untuk sediakan sebut harga yang sesuai.";
+                message += (currentLang === 'ms') ? "\n\nMohon bantu saya untuk sediakan sebut harga yang sesuai." : "\n\nPlease help me prepare a suitable quotation.";
             }
                           
             var encodedMessage = encodeURIComponent(message);
@@ -411,6 +530,5 @@
             window.open(whatsappUrl, '_blank');
         });
     </script>
-
 </body>
 </html>
